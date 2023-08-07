@@ -8,6 +8,8 @@ const Home: React.FC = () => {
   const router = useRouter();
   const { status, wallet } = ethos.useWallet();
 
+  console.log(wallet);
+
   const [amount, setAmount] = useState<number>(0);
   const [receiver, setReceiver] = useState<string>("");
   const [balance, setBalance] = useState<number>(0);
@@ -57,8 +59,13 @@ const Home: React.FC = () => {
               Sign Out
             </button>
           </div>
+          <div className="text-white mt-2">Wallet Name {wallet?.name}</div>
           <div className="text-white mt-2">My address: {wallet?.address}</div>
-          <h1 className=" text-white text-3xl ">My balance:</h1>
+
+          <h1 className=" text-white text-3xl ">
+            My balance:
+            {wallet?.contents && wallet.contents.suiBalance.toString()}
+          </h1>
           <h1 className=" text-white mt-2 mb-2">Enter address to send money</h1>
           <input
             className="p-2"
