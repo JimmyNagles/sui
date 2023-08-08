@@ -1,15 +1,16 @@
 import "../styles/globals.css";
-import { EthosConnectProvider } from "ethos-connect";
+import { Chain, EthosConnectProvider } from "ethos-connect";
 import type { AppProps } from "next/app";
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <EthosConnectProvider
       ethosConfiguration={{
+        chain: Chain.SUI_DEVNET,
         hideEmailSignIn: true,
       }}
-      dappName="Ethos Squad"
-      connectMessage="Sign in to join the Squad!"
+      dappName="SuiPay"
+      connectMessage="Sign in to SuiPay"
     >
       <Component {...pageProps} />
     </EthosConnectProvider>
