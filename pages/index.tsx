@@ -7,10 +7,6 @@ import Tabs from "../components/Tabs/Tabs";
 import FadeIn from "../components/animations/FadeIn";
 import SlideIn from "../components/animations/SlideIn";
 
-const TabAContent = () => <div>Content for Tab A</div>;
-const TabBContent = () => <div>Content for Tab B</div>;
-const TabCContent = () => <div>Content for Tab C</div>;
-
 const Home: React.FC = () => {
   const router = useRouter();
   const contractAddress =
@@ -43,7 +39,7 @@ const Home: React.FC = () => {
 
   const tabs = [
     {
-      title: "Wallet",
+      title: "Home",
       content: (
         <div>
           <SlideIn direction="right">
@@ -86,7 +82,7 @@ const Home: React.FC = () => {
       ),
     },
     {
-      title: "Mint NFT",
+      title: "Cards",
       content: (
         <FadeIn>
           <h1>TEXT B</h1>
@@ -94,7 +90,7 @@ const Home: React.FC = () => {
       ),
     },
     {
-      title: "Digital Card",
+      title: "Profile",
       content: (
         <FadeIn>
           <SlideIn direction="left">
