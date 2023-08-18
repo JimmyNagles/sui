@@ -9,17 +9,11 @@ const Mint = () => {
     "0xddba96419d5272af78072c88a4dbc451d0ae8a21eb84a69fb5098cda35b5f7c7";
   const { wallet } = ethos.useWallet();
   const [nftObjectId, setNftObjectId] = useState(null);
-  const [nftName, setNftName] = useState("My NFT TEST");
-  const [nftDescription, setNftDescription] = useState(
-    "My NFT Description TEST"
-  );
-  const [nftImgUrl, setNftImgUrl] = useState(
-    "https://ethoswallet.xyz/assets/images/ethos-email-logo.png"
-  );
+
   const [state, setState] = useState({
     nftObjectId: null,
-    nftName: "My NFT ",
-    nftDescription: "My NFT Description TEST",
+    nftName: null,
+    nftDescription: null,
     nftImgUrl: "https://ethoswallet.xyz/assets/images/ethos-email-logo.png",
   });
 
@@ -89,20 +83,23 @@ const Mint = () => {
 
       <div>
         <input
-          className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className=" w-full p-4  text-gray-900 border  sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           name="nftName"
+          placeholder="Enter Name"
           value={state.nftName}
           onChange={handleInputChange}
         />
         <input
-          className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="description"
+          className=" w-full p-4 text-gray-900 border  sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           name="nftDescription"
           value={state.nftDescription}
           onChange={handleInputChange}
         />
         <input
-          className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className=" w-full p-4 text-gray-900 border  sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           name="nftImgUrl"
+          placeholder="URL"
           value={state.nftImgUrl}
           onChange={handleInputChange}
         />
