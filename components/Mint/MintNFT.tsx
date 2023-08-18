@@ -72,16 +72,6 @@ const Mint = () => {
     reset();
   }, [reset]);
 
-  function handleNftNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setNftName(e.target.value);
-  }
-
-  function handleNftDescriptionChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setNftDescription(e.target.value);
-  }
-  function handleNftImgUrlChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setNftImgUrl(e.target.value);
-  }
   return (
     <div className="flex flex-col gap-6">
       {nftObjectId && (
