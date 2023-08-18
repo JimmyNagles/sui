@@ -6,6 +6,7 @@ import { ethos, SignInButton, EthosConnectStatus } from "ethos-connect";
 import Tabs from "../components/Tabs/Tabs";
 import FadeIn from "../components/animations/FadeIn";
 import SlideIn from "../components/animations/SlideIn";
+import Mint from "../components/Mint/MintNFT";
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -90,11 +91,11 @@ const Home: React.FC = () => {
       ),
     },
     {
-      title: "Profile",
+      title: "Mint",
       content: (
         <FadeIn>
           <SlideIn direction="left">
-            <h1>TEXT C</h1>
+            <Mint />
           </SlideIn>
         </FadeIn>
       ),
