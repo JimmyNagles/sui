@@ -1,5 +1,4 @@
 import { useState } from "react";
-import FadeIn from "../animations/FadeIn";
 
 interface TabProps {
   title: string;
@@ -21,10 +20,10 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={`py-2 px-4 w-[200px] text-white transition-all duration-1000 ease-in ${
+            className={`py-2 px-4 w-[200px] text-black transition-all duration-1000 ease-in ${
               activeTab === index
-                ? "bg-blue-900 bg-opacity-70 shadow-inner w-full h-full"
-                : "bg-blue-900 bg-opacity-0 hover:bg-opacity-80 hover:shadow-2xl"
+                ? "bg-gray-900 bg-opacity-70 shadow-inner text-white w-full h-full"
+                : "bg-gray-900 bg-opacity-0 hover:text-white hover:bg-opacity-80 hover:shadow-2xl"
             }`}
             onClick={() => {
               setActiveTab(index);
@@ -36,7 +35,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
         ))}
       </div>
 
-      <div className={`py-2 px-4 text-white `}>{tabs[activeTab].content}</div>
+      <div className={`py-2 px-4 text-black `}>{tabs[activeTab].content}</div>
     </div>
   );
 };
