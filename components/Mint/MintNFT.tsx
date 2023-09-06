@@ -6,14 +6,13 @@ import SuccessMessage from "./SuccesMessage";
 
 const Mint = () => {
   const contractAddress =
-    "0xddba96419d5272af78072c88a4dbc451d0ae8a21eb84a69fb5098cda35b5f7c7";
+    "0xfc61bdba79fbde6aa2b8344f9226525b4d90bbd2ed6998e2db41f3a0986c1374";
   const { wallet } = ethos.useWallet();
   const [nftObjectId, setNftObjectId] = useState(null);
 
   const [state, setState] = useState({
-    nftObjectId: null,
-    nftName: null,
-    nftDescription: null,
+    nftName: "",
+    nftDescription: "",
     nftImgUrl: "https://ethoswallet.xyz/assets/images/ethos-email-logo.png",
   });
 
@@ -28,12 +27,8 @@ const Mint = () => {
     try {
       const transactionBlock = new TransactionBlock();
 
-      console.log("nftName", state.nftName);
-      console.log("nftName", state.nftDescription);
-      console.log("nftName", state.nftImgUrl);
-
       const nft = transactionBlock.moveCall({
-        target: `${contractAddress}::nft_example::mint_to_sender`,
+        target: `${contractAddress}::boatheads::mint`,
         arguments: [
           transactionBlock.pure(state.nftName),
           transactionBlock.pure(state.nftDescription),
@@ -51,15 +46,16 @@ const Mint = () => {
           showObjectChanges: true,
         },
       });
-      console.log("Transaction Response", response);
+
+      console.log(response);
       setNftObjectId(response);
     } catch (error) {
       console.log(error);
     }
-  }, [wallet]);
+  }, [wallet, state]);
 
   const reset = useCallback(() => {
-    setNftObjectId(undefined);
+    setNftObjectId(null);
   }, []);
 
   useEffect(() => {
@@ -71,7 +67,7 @@ const Mint = () => {
       {nftObjectId && (
         <SuccessMessage reset={reset}>
           <a
-            href={`https://explorer.sui.io/objects/${nftObjectId}?network=testnet`}
+            href={`https://explorer.sui.io/txblock/${nftObjectId.digest}?network=devnet`}
             target="_blank"
             rel="noreferrer"
             className="underline font-blue-600"
@@ -83,7 +79,7 @@ const Mint = () => {
 
       <div>
         <input
-          className=" w-full p-4  text-gray-900 border  sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className=" w-full p-4  text-gray-900 border  sm:text-xs focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
           name="nftName"
           placeholder="Enter Name"
           value={state.nftName}
@@ -91,13 +87,13 @@ const Mint = () => {
         />
         <input
           placeholder="description"
-          className=" w-full p-4 text-gray-900 border  sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className=" w-full p-4 text-gray-900 border  sm:text-xs focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
           name="nftDescription"
           value={state.nftDescription}
           onChange={handleInputChange}
         />
         <input
-          className=" w-full p-4 text-gray-900 border  sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className=" w-full p-4 text-gray-900 border  sm:text-xs focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
           name="nftImgUrl"
           placeholder="URL"
           value={state.nftImgUrl}
@@ -105,7 +101,7 @@ const Mint = () => {
         />
       </div>
       <button
-        className="mx-auto px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+        className="p-2 mb-2 bg-gray-900 hover:text-white border-gray-200 border-2  shadow-inner bg-opacity-0  hover:bg-opacity-80 hover:shadow-2xl transition-all duration-1000 ease-in w-[200px] text-black  rounded-md"
         onClick={mint}
       >
         Mint an NFT

@@ -7,6 +7,7 @@ import Tabs from "../components/Tabs/Tabs";
 import FadeIn from "../components/animations/FadeIn";
 import SlideIn from "../components/animations/SlideIn";
 import Mint from "../components/Mint/MintNFT";
+import GatedNFT from "../components/Gated/GatedNFT";
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -45,16 +46,16 @@ const Home: React.FC = () => {
         <div>
           <SlideIn direction="right">
             <div className="w-full h-[500px] flex flex-col justify-center">
-              <div className="text-white mt-2">
+              <div className="text-black mt-2">
                 My address: {wallet?.address}
               </div>
-              <div className="text-white mt-2">Wallet Name {wallet?.name}</div>
+              <div className="text-black mt-2">Wallet Name {wallet?.name}</div>
 
-              <h1 className=" text-white text-3xl ">
+              <h1 className=" text-black text-3xl ">
                 My balance:
                 {wallet?.contents && wallet.contents.suiBalance.toString()}
               </h1>
-              <h1 className=" text-white mt-2 mb-2">
+              <h1 className=" text-black mt-2 mb-2">
                 Enter address to send money
               </h1>
               <input
@@ -63,7 +64,7 @@ const Home: React.FC = () => {
                 value={receiver}
                 onChange={handleReceiverChange}
               />
-              <h1 className="p-2 text-white">Enter amount</h1>
+              <h1 className="p-2 text-black">Enter amount</h1>
               <input
                 className="p-2"
                 placeholder="Enter amount"
@@ -72,7 +73,7 @@ const Home: React.FC = () => {
                 onChange={handleAmountChange}
               />
               <button
-                className="p-2 mt-4 bg-blue-900 shadow-inner bg-opacity-0  hover:bg-opacity-80 hover:shadow-2xl transition-all duration-1000 ease-in w-[200px] text-white border rounded-md"
+                className="p-2 mt-4 bg-blue-900 shadow-inner bg-opacity-0  hover:bg-opacity-80 hover:shadow-2xl transition-all duration-1000 ease-in w-[200px] text-black border rounded-md"
                 onClick={handleSendMoney}
               >
                 Send
@@ -86,7 +87,7 @@ const Home: React.FC = () => {
       title: "Cards",
       content: (
         <FadeIn>
-          <h1>TEXT B</h1>
+          <GatedNFT></GatedNFT>
         </FadeIn>
       ),
     },
@@ -106,15 +107,22 @@ const Home: React.FC = () => {
     // If wallet is not connected, return a button which allows them to connect their wallet
     if (!wallet) {
       return (
-        <div className="text-white flex flex-col justify-center items-center">
+        <div className="text-black flex flex-col justify-center items-center">
           <div className="h-[150px]">
             <h1 className="tex-2xl">Welcome To</h1>
-            <h1 className="text-6xl text-white ">SuiPay</h1>
+            {/* <h1 className="text-6xl text-black ">BoatHeads NFTs</h1> */}
+
+            <Image
+              alt=""
+              width={250}
+              height={250}
+              src={"/boatheadslogo.png"}
+            ></Image>
           </div>
 
-          <div className="text-white flex flex-col justify-center items-center">
+          <div className="text-black flex flex-col justify-center items-center">
             <h1 className=" mb-4">No wallet connected</h1>
-            <SignInButton className="p-2 mb-2 bg-blue-900 border-white  shadow-inner bg-opacity-0  hover:bg-opacity-80 hover:shadow-2xl transition-all duration-1000 ease-in w-[200px] text-white  rounded-md" />
+            <SignInButton className="p-2 mb-2 bg-gray-900 border-white  shadow-inner bg-opacity-0  hover:bg-opacity-80 hover:shadow-2xl transition-all duration-1000 ease-in w-[200px] text-black  rounded-md" />
           </div>
         </div>
       );
@@ -129,7 +137,7 @@ const Home: React.FC = () => {
       <div className="flex flex-col justify-center min-h-screen mb-60">
         {/* <div className="flex flex-row-reverse">
           <button
-            className="p-2 mb-2 bg-blue-900 shadow-inner bg-opacity-0  hover:bg-opacity-80 hover:shadow-2xl transition-all duration-1000 ease-in w-[200px] text-white border rounded-md"
+            className="p-2 mb-2 bg-blue-900 shadow-inner bg-opacity-0  hover:bg-opacity-80 hover:shadow-2xl transition-all duration-1000 ease-in w-[200px] text-black border rounded-md"
             onClick={wallet && wallet.disconnect}
           >
             Sign Out
@@ -146,11 +154,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div
-      className={
-        "min-h-screen bg-blue-950 flex flex-col justify-center items-center "
-      }
-    >
+    <div className={"min-h-screen  flex flex-col justify-center items-center "}>
       <div className="navbar bg-opacity-20 backdrop-blur-md fixed top-0  left-0 w-full p-6 flex justify-between items-center z-50">
         <div></div>
         <div>
